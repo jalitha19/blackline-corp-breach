@@ -1,0 +1,38 @@
+BLACKLINE CORP
+INCIDENT RESPONSE - FINAL EVIDENCE REPORT
+
+Case: Blackline Corp Breach
+Classification: Internal Investigation Record
+
+The incident-response investigation has confirmed that the compromise
+of the Blackline Corp employee portal was not an isolated event.
+
+Evidence recovered throughout the investigation established the
+following sequence:
+
+1. Publicly exposed information provided the attacker with useful
+   reconnaissance information.
+
+2. Weak protection of internal information revealed additional
+   credential-related clues.
+
+3. Hidden information embedded inside an image exposed another
+   component required by the attacker.
+
+4. The Blackline Corp employee portal contained an authentication
+   weakness that allowed unauthorized access.
+
+5. Server and authentication logs confirmed suspicious activity after
+   the compromise and revealed the attacker's subsequent actions.
+
+The evidence gathered across the investigation has now been correlated.
+
+FINAL STATUS:
+The intrusion path has been reconstructed and the incident is considered
+resolved for the purposes of this investigation.
+
+FINAL FLAG:
+
+BLK{case_closed_blackline}
+
+--- END OF CASE FILE ---

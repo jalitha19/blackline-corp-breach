@@ -1,0 +1,18 @@
+BLACKLINE CORPORATION
+INTERNAL OPERATIONS MEMO
+CLASSIFICATION: INTERNAL USE ONLY
+
+Subject: Legacy employee access review
+
+During the review of archived access records, an old infrastructure account was identified.
+
+Employee: Maya Reed
+Account username: mreed
+
+The account should have been disabled during offboarding, but historical records suggest it remained referenced by legacy systems.
+
+Investigation note:
+Weak encryption provides little protection when the method is predictable.
+
+Stage verification:
+BLK{weak_ciphers_break_fast}

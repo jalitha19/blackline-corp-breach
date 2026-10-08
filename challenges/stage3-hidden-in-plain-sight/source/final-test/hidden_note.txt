@@ -1,0 +1,9 @@
+BLACKLINE INCIDENT RESPONSE
+RECOVERED PRIVATE NOTE
+
+Legacy access records were not completely removed during offboarding.
+
+Case Fragment: NIGHTFALL
+
+Stage Verification:
+BLK{pixels_keep_secrets}

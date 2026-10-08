@@ -1,0 +1,70 @@
+services:
+
+  portal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: blackline-employee-portal
+
+    depends_on:
+      database:
+        condition: service_healthy
+
+    environment:
+      DB_HOST: database
+      DB_NAME: blackline_portal
+      DB_USER: blackline
+      DB_PASSWORD: blackline_lab_password
+
+    ports:
+      - "8082:80"
+
+    networks:
+      - blackline_stage4
+
+    restart: unless-stopped
+
+
+  database:
+    image: mariadb:10.11
+
+    container_name: blackline-stage4-db
+
+    environment:
+      MARIADB_DATABASE: blackline_portal
+      MARIADB_USER: blackline
+      MARIADB_PASSWORD: blackline_lab_password
+      MARIADB_ROOT_PASSWORD: stage4_root_lab_password
+
+    volumes:
+      - stage4_db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+    networks:
+      - blackline_stage4
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "healthcheck.sh",
+          "--connect",
+          "--innodb_initialized"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+    restart: unless-stopped
+
+
+networks:
+
+  blackline_stage4:
+    name: blackline_stage4_network
+
+
+volumes:
+
+  stage4_db_data:
