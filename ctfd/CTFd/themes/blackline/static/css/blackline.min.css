@@ -1,0 +1,476 @@
+/* BLACKLINE CORP BREACH — CTFd player theme
+   Relies on the existing CTFd core JavaScript and Bootstrap/Font Awesome.
+   No external CDN required. Admin UI intentionally unchanged. */
+:root,
+[data-bs-theme="light"],
+[data-bs-theme="dark"] {
+  color-scheme: dark;
+  --bs-body-bg: #080f19;
+  --bs-body-color: #e4eff9;
+  --bs-secondary-color: #a9bbcc;
+  --bs-tertiary-bg: #111e2b;
+  --bs-secondary-bg: #111d2b;
+  --bs-border-color: #294256;
+  --bs-emphasis-color: #ffffff;
+  --bs-heading-color: #f4f9fc;
+  --bs-primary: #2ae2e7;
+  --bs-primary-rgb: 42, 226, 231;
+  --bs-link-color: #7cecf0;
+  --bs-link-hover-color: #b6ffff;
+  --bl-bg: #080f19;
+  --bl-panel: #101d2a;
+  --bl-line: #294155;
+  --bl-cyan: #2ae2e7;
+  --bl-red: #ff4e67;
+  --bl-muted: #afc1d3;
+}
+html { background: var(--bl-bg); scroll-behavior: smooth; }
+body {
+  background: radial-gradient(ellipse 65% 35% at 85% -2%, rgba(42,226,231,.08), transparent 70%),
+              radial-gradient(ellipse 55% 42% at -15% 45%, rgba(255,78,103,.06), transparent 68%),
+              #080f19;
+  color: #e4eff9;
+  font-family: Inter, 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+body, .table, .modal-content, .dropdown-menu { color: #e4eff9; }
+h1,h2,h3,h4,h5,h6 { color:#f5f9fe; font-weight: 750; letter-spacing: -.025em; }
+a { color: #72edf2; }
+a:hover { color: #d4ffff; }
+::selection { background: #245e66; color: white; }
+:focus-visible { outline: 3px solid #64eef0 !important; outline-offset: 3px; }
+
+/* NAVIGATION */
+.navbar.bg-dark,.navbar {
+  background: rgba(7, 16, 26, .95) !important;
+  border-bottom: 1px solid #244252;
+  box-shadow: 0 10px 35px rgba(0,0,0,.22);
+  backdrop-filter: blur(14px);
+}
+.navbar .navbar-brand {
+  font-weight: 850; letter-spacing: .075em; text-transform: uppercase;
+  font-size: .94rem; color: #f2ffff !important;
+}
+.navbar .navbar-brand::before {
+  content: '\f3ed'; font-family: 'Font Awesome 5 Free'; font-weight: 900;
+  color: #2ae2e7; margin-right: .65rem;
+}
+.navbar .nav-link { color: #c8d8e6 !important; font-size: .91rem; font-weight: 600; }
+.navbar .nav-link:hover, .navbar .nav-link:focus { color: #6ff0f5 !important; }
+.dropdown-menu { background: #101e2b; border: 1px solid #35566a; }
+.dropdown-item { color: #e6f3ff; }
+.dropdown-item:hover,.dropdown-item:focus { background:#173445; color: #fff; }
+
+/* SECTION HEADINGS / BACKDROP */
+.jumbotron {
+  background: linear-gradient(118deg,rgba(17,38,54,.96),rgba(12,21,34,.96));
+  color:#f1faff; padding: 3rem 0 2.4rem;
+  border-bottom: 1px solid #24485a; margin-bottom:2rem;
+  position: relative; overflow:hidden;
+}
+.jumbotron::after {
+  content:''; width:260px; height:260px; border:1px solid rgba(42,226,231,.12);
+  position:absolute; right:-55px; top:-148px; transform:rotate(35deg); pointer-events:none;
+}
+.jumbotron h1 { text-transform:uppercase; letter-spacing:.045em; font-weight:850; }
+.jumbotron h1::before { content:'// '; color:var(--bl-red); }
+hr { border-color:#385268; opacity:.6; }
+
+/* CHALLENGE BOARD */
+.category-header h3 { text-transform:uppercase; font-size:1.25rem; letter-spacing:.07em; }
+.category-header h3::before { content:'▸ '; color:var(--bl-cyan); }
+.challenge-button.btn-dark {
+  min-height:135px; position:relative; overflow:hidden;
+  border:1px solid #2c4b5d !important; border-radius:13px !important;
+  background: linear-gradient(140deg,#132435,#0d1a28) !important;
+  box-shadow: 0 10px 26px rgba(0,0,0,.13);
+  transition:transform .18s, border-color .18s, box-shadow .18s;
+  color: #f0f8ff !important;
+}
+.challenge-button.btn-dark::before { content:''; position:absolute; top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#21bec4,#4ceaf1,#ff4e67); }
+.challenge-button.btn-dark:hover, .challenge-button.btn-dark:focus-visible {
+  transform:translateY(-3px); border-color:#39d9e2 !important;
+  box-shadow: 0 15px 34px rgba(16,220,232,.13);
+}
+.challenge-button .challenge-inner p { font-size:1.04rem; font-weight:760; margin-bottom:1rem; }
+.challenge-button .challenge-inner span { color:#8ef5f7; font-weight:760; }
+.challenge-button.challenge-solved { border-color:#2acb96 !important; background:linear-gradient(145deg,#103b35,#10292d)!important; }
+.challenge-button.challenge-solved::before { background:#2acb96; }
+
+/* MODALS, FORMS AND TABLES */
+.modal-content, .card, .panel, .list-group-item, .accordion-item {
+  background: #101e2b; color:#edf5ff; border:1px solid #2d4a5d;
+  border-radius: 12px;
+}
+.modal-header,.modal-footer { border-color:#294657; }
+.modal-content .close, .btn-close { filter:invert(1) grayscale(1); }
+.form-control, .form-select, textarea, input[type='text'], input[type='password'], input[type='email'] {
+  background-color:#0b1724; border:1px solid #38566b; color:#f2faff;
+  border-radius:8px;
+}
+.form-control:focus,.form-select:focus,textarea:focus {
+  background-color:#0e2030; color:#fff; border-color:#3ddde4;
+  box-shadow:0 0 0 .22rem rgba(42,226,231,.14);
+}
+.form-control::placeholder, textarea::placeholder {color:#91a9bd; opacity:1;}
+.btn-primary { background:#27c9ce; border-color:#27c9ce; color:#03151a; font-weight:750; }
+.btn-primary:hover, .btn-primary:focus { background:#63e8ee; border-color:#63e8ee; color:#021419; }
+.btn-outline-primary { border-color:#2ed4d9; color:#8bf2f5; }
+.btn-outline-primary:hover { background:#2ed4d9; color:#021419; }
+.btn-secondary,.btn-dark { background:#1b3244; border-color:#36556c; color:#f2f8fe; }
+.btn-outline-light { border-color:#507184; color:#edfaff; }
+.table { --bs-table-bg: transparent; --bs-table-color:#e4edf5; --bs-table-border-color:#2e495d; --bs-table-striped-bg:#142b3c; --bs-table-striped-color:#f5fcff; --bs-table-hover-bg:#173849; --bs-table-hover-color:#fff; }
+.table thead { color:#9ff5f7; background:#152b3b; }
+.table th,.table td { border-color:#2a4556; }
+pre, code { color:#84ecf1; }
+.alert { border-radius:10px; }
+.alert-info { color:#dafaff; background:#133b48; border-color:#247182; }
+.alert-danger { color:#ffd9df; background:#3b1d2a; border-color:#9d4556; }
+.alert-success { color:#d2fff0; background:#143f35; border-color:#277a60; }
+
+/* SCOREBOARD */
+#score-graph, .scoreboard, .scoreboard-table { filter:none; }
+.scoreboard-table { background: #101e2b; border-radius:12px; overflow:hidden; }
+
+/* CINEMATIC HOMEPAGE */
+.bl-hero {
+  border-bottom:1px solid #244b5e;
+  background: radial-gradient(ellipse 40% 75% at 50% 0%,rgba(36,220,232,.13),transparent 75%),
+              repeating-linear-gradient(90deg,transparent,transparent 69px,rgba(77,154,177,.045) 70px),
+              linear-gradient(130deg,#0b1725,#0b1d2b 56%,#1e1523);
+  position:relative; overflow:hidden;
+}
+.bl-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(125deg,transparent 57%,rgba(255,65,93,.035) 57.1%,transparent 68%);pointer-events:none; }
+.bl-hero-inner { text-align:center; padding:5.25rem 1rem 4rem; position:relative; }
+.bl-status { display:inline-flex;align-items:center;gap:10px;color:#a6e4e5; font-family:Consolas,monospace; font-size:.72rem;letter-spacing:.14em; border:1px solid #2a5364;background:#0c2430;border-radius:30px;padding:.5rem .95rem; }
+.bl-led { width:7px;height:7px;border-radius:50%;background:#25e1bc;box-shadow:0 0 12px #25e1bc; }
+.bl-emblem { margin:2.3rem auto 1rem; height:78px; width:78px; background:#112e40;border:2px solid #45e4eb;border-radius:23px;transform:rotate(-9deg);display:flex;align-items:center;justify-content:center;gap:3px;box-shadow:0 0 40px #11bbc020; }
+.bl-emblem i,.bl-emblem span { color:#7af2f5;font-size:25px;transform:rotate(9deg); }
+.bl-emblem span { font-size:15px;font-weight:900;color:#ff607a; }
+.bl-eyebrow,.bl-kicker { font-family:Consolas,'Courier New',monospace;font-size:.78rem;letter-spacing:.23em;color:#9fe9ec;font-weight:700; }
+.bl-hero h1 { font-size:clamp(2.4rem,6vw,5.2rem);font-weight:900;letter-spacing:-.035em;margin:1rem auto 1.15rem;line-height:1.08;max-width:1050px; }
+.bl-hero h1 span { color:#ff5b72; }
+.bl-lead { margin:0 auto;color:#bfcedb;max-width:690px;font-size:1.14rem;line-height:1.8; }
+.bl-hero-actions { display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin:2.2rem 0 3rem; }
+.bl-hero-actions .btn { border-radius:9px;padding:.85rem 1.4rem; }
+.bl-statline { display:flex;justify-content:center;flex-wrap:wrap;gap:3.4rem;border-top:1px solid #315263;padding-top:1.8rem;max-width:650px;margin:0 auto; }
+.bl-statline div { display:flex;flex-direction:column;gap:3px; }
+.bl-statline b { font-size:1.8rem;color:#f4feff; }
+.bl-statline span { font-size:.67rem;letter-spacing:.13em;color:#a9bfcd;font-weight:700; }
+.bl-briefing { padding:3.7rem 1rem 4rem; }
+.bl-briefing h2 { font-size:clamp(1.65rem,3vw,2.35rem);margin:.7rem 0 1.2rem; }
+.bl-briefing p {color:#bbccda;font-size:1.04rem;line-height:1.8;max-width:750px;}
+.bl-brief-card {border:1px solid #305568;border-radius:14px;background:linear-gradient(145deg,#142b3d,#111d2a);padding:1.6rem;display:flex;flex-direction:column;align-items:flex-start;gap:.55rem;}
+.bl-brief-card i { color:#49e6e9;font-size:1.65rem;margin-bottom:.4rem; }
+.bl-brief-card strong {font-size:.75rem;letter-spacing:.15em;color:#a8c4d3;}
+.bl-brief-card span {color:#6af6d5;font-size:.95rem;font-weight:850;}
+.bl-brief-card small {color:#d1dce8;font-family:Consolas,monospace;}
+.bl-page-content { padding-bottom:2rem; }
+.footer { border-top:1px solid #263f50; background:#091521; padding:1.7rem 0; }
+.footer a,.footer small { color:#a6bac8 !important; }
+
+@media (max-width: 767px) {
+  .bl-hero-inner { padding:3.8rem .6rem 3rem; }
+  .bl-hero-actions .btn { width:100%; max-width:340px; }
+  .bl-statline { gap:1.3rem; }
+  .bl-statline b { font-size:1.4rem; }
+  .jumbotron { padding:2.3rem 0 1.7rem; }
+  .category-header h3 { font-size:1.05rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { transition-duration:.01ms !important; animation-duration:.01ms !important; }
+}
+
+/* BLACKLINE MISSION BOARD UPGRADE v1
+   CTFd 3.8.x: layout + presentation only. No JS/flag logic modifications. */
+
+/* Turn the six category groups into a responsive mission dashboard. */
+#challenges-board {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+  width: 100%;
+  align-items: stretch;
+  padding-top: 1.2rem;
+  padding-bottom: 4rem;
+}
+
+/* Each category becomes a contained mission panel. */
+#challenges-board > div {
+  min-width: 0;
+  margin: 0 !important;
+  padding: 1.25rem !important;
+  border: 1px solid #294658;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(18,35,50,.95), rgba(10,20,31,.95));
+  box-shadow: 0 18px 45px rgba(0,0,0,.22);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+#challenges-board > div::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2ae2e7, #257c9b 72%, #ff4e67);
+}
+
+/* Remove the width constraints generated for the old Bootstrap layout. */
+#challenges-board .category-header,
+#challenges-board .category-challenges,
+#challenges-board .challenges-row,
+#challenges-board .challenges-row > div {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0;
+  flex: 0 0 100%;
+}
+#challenges-board .category-header { padding: .15rem 0 .8rem !important; margin: 0 !important; }
+#challenges-board .category-header h3 {
+  color: #a7dbe3;
+  font-size: .86rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  margin: 0;
+}
+#challenges-board .category-header h3::before {
+  content: '// ';
+  color: #30dce8;
+}
+#challenges-board .category-challenges { padding: 0 !important; flex: 1; }
+#challenges-board .challenges-row {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: .8rem;
+}
+#challenges-board .challenges-row > div {
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Mission buttons remain real CTFd buttons, with original click handlers. */
+#challenges-board .challenge-button {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  min-height: 142px;
+  margin: 0 !important;
+  padding: 1.2rem .9rem !important;
+  border-radius: 11px !important;
+  white-space: normal !important;
+  overflow: hidden;
+  text-overflow: unset !important;
+  text-align: center;
+  background: linear-gradient(135deg, #13293a, #0c1c2b) !important;
+  border: 1px solid #31536a !important;
+  color: #f2f8ff !important;
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+  position: relative;
+}
+#challenges-board .challenge-button:hover,
+#challenges-board .challenge-button:focus-visible {
+  transform: translateY(-3px);
+  border-color: #34e1e8 !important;
+  box-shadow: 0 10px 30px rgba(42,226,231,.12);
+}
+#challenges-board .challenge-button .challenge-inner { width: 100%; min-width: 0; }
+#challenges-board .challenge-button .challenge-inner p {
+  color: #f0fbff;
+  font-size: 1.12rem;
+  line-height: 1.35;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  margin: .15rem 0 .9rem;
+  font-weight: 800;
+}
+#challenges-board .challenge-button .challenge-inner span {
+  color: #61e9ed;
+  font-size: .95rem;
+  font-weight: 850;
+}
+#challenges-board .challenge-button.solved-challenge,
+#challenges-board .challenge-button.challenge-solved {
+  background: linear-gradient(135deg, #11302d, #0c2428) !important;
+  border-color: #277c67 !important;
+}
+#challenges-board .challenge-button.solved-challenge .challenge-inner span,
+#challenges-board .challenge-button.challenge-solved .challenge-inner span {
+  color: #69ecc3;
+}
+#challenges-board .corner-button-check { color: #74f5c8; }
+
+/* Modal appearance only: keep CTFd forms and submission scripts untouched. */
+#challenge-window .modal-content,
+#challenge-modal .modal-content {
+  border: 1px solid #355d70;
+  background: #101e2c;
+  box-shadow: 0 24px 80px rgba(0,0,0,.65);
+}
+#challenge-window .modal-header,
+#challenge-modal .modal-header { border-bottom-color: #294657; }
+
+@media (max-width: 1100px) {
+  #challenges-board { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+}
+@media (max-width: 650px) {
+  #challenges-board { grid-template-columns: minmax(0,1fr); gap: .85rem; }
+  #challenges-board > div { padding: 1rem !important; }
+  #challenges-board .challenge-button { min-height: 110px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #challenges-board .challenge-button { transition: none; }
+}
+
+
+/* BLACKLINE MISSION GRID V2 */
+/* CTFd 3.8.8 category layout */
+
+body:has(#challenge-window)
+.container > div:has(> div > .pt-5 > .category-header) {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+    align-items: stretch;
+}
+
+/* Each category becomes a mission panel */
+body:has(#challenge-window)
+.container > div:has(> div > .pt-5 > .category-header) > div {
+    min-width: 0;
+    padding: 22px !important;
+    background: linear-gradient(145deg, #101f2e, #0a131f);
+    border: 1px solid rgba(18, 205, 214, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+}
+
+/* Remove excessive space above categories */
+body:has(#challenge-window)
+.container > div:has(> div > .pt-5 > .category-header)
+> div > .pt-5 {
+    padding-top: 0 !important;
+}
+
+/* Category names */
+body:has(#challenge-window)
+.category-header h3 {
+    color: #12cdd6 !important;
+    font-size: 1rem !important;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Expand challenge-card columns to fill each panel */
+body:has(#challenge-window)
+.container > div:has(> div > .pt-5 > .category-header)
+> div .row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Mission buttons */
+body:has(#challenge-window)
+.challenge-button {
+    width: 100% !important;
+    min-height: 125px;
+    border-radius: 12px !important;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+body:has(#challenge-window)
+.challenge-button:hover {
+    transform: translateY(-3px);
+    border-color: #12cdd6 !important;
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+    body:has(#challenge-window)
+    .container > div:has(> div > .pt-5 > .category-header) {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    body:has(#challenge-window)
+    .container > div:has(> div > .pt-5 > .category-header) {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* BLACKLINE MISSION GRID V3 - CORRECTED */
+
+/* Undo the earlier grid on the outer wrapper */
+body:has(#challenge-window)
+.container > div:has(> div > .pt-5 > .category-header) {
+    display: block !important;
+    grid-template-columns: none !important;
+}
+
+/* Remove the accidental single large panel */
+body:has(#challenge-window)
+.container > div:has(> div > .pt-5 > .category-header) > div {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* Arrange the actual six category sections */
+body:has(#challenge-window)
+.container > div:has(> div > .pt-5 > .category-header)
+> div[x-show="loaded"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+    align-items: stretch;
+}
+
+/* Independent category panels */
+body:has(#challenge-window)
+.container > div:has(> div > .pt-5 > .category-header)
+> div[x-show="loaded"] > .pt-5 {
+    padding: 24px !important;
+    min-width: 0;
+    background: linear-gradient(145deg, #102332, #0b1724);
+    border: 1px solid rgba(18, 205, 214, .3);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+}
+
+/* Challenge cards occupy their category panel */
+body:has(#challenge-window)
+div[x-show="loaded"] > .pt-5
+.challenges-row > [class*="col-"] {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+    body:has(#challenge-window)
+    div[x-show="loaded"] {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    body:has(#challenge-window)
+    div[x-show="loaded"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+

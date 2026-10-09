@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.path == '/' %}
+<section class="bl-hero">
+  <div class="container bl-hero-inner">
+    <div class="bl-status"><span class="bl-led" aria-hidden="true"></span> BLACKLINE INCIDENT RESPONSE // CASE 001</div>
+    <div class="bl-emblem" aria-hidden="true"><i class="fas fa-shield-alt"></i><span>BL</span></div>
+    <p class="bl-eyebrow">IE3132 · PENETRATION TESTING</p>
+    <h1>BLACKLINE <span>CORP BREACH</span></h1>
+    <p class="bl-lead">The breach is real inside the simulation. Reconstruct the attack. Trace the evidence. Close the case.</p>
+    <div class="bl-hero-actions">
+      <a class="btn btn-primary btn-lg" href="{{ url_for('challenges.listing') }}"><i class="fas fa-terminal me-2"></i> Enter challenge board</a>
+      <a class="btn btn-outline-light btn-lg" href="{{ url_for('scoreboard.listing') }}"><i class="fas fa-trophy me-2"></i> View scoreboard</a>
+    </div>
+    <div class="bl-statline" aria-label="Competition overview">
+      <div><b>06</b><span>CONNECTED MISSIONS</span></div>
+      <div><b>05</b><span>SECURITY DOMAINS</span></div>
+      <div><b>01</b><span>FINAL CASE</span></div>
+    </div>
+  </div>
+</section>
+<section class="container bl-briefing">
+  <div class="bl-kicker">// MISSION BRIEFING</div>
+  <div class="row g-4 align-items-start">
+    <div class="col-md-8">
+      <h2>Someone breached Blackline Corp.</h2>
+      <p>Join the investigation as a junior response analyst. Follow evidence through OSINT, cryptography, steganography, web security, and digital forensics. Each solved mission brings you closer to the final disclosure.</p>
+    </div>
+    <div class="col-md-4">
+      <div class="bl-brief-card"><i class="fas fa-fingerprint" aria-hidden="true"></i><strong>CASE STATUS</strong><span>INVESTIGATION OPEN</span><small>Flag format: BLK{...}</small></div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% if content %}<section class="container bl-page-content">{{ content | safe }}</section>{% endif %}
+{% endblock %}
+
+{% block scripts %}
+  {{ Assets.js("assets/js/page.js") }}
+{% endblock %}
